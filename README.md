@@ -5,6 +5,7 @@ designed to enable decentralized **association, introspection, and coordination*
 
 > 🚩 This repository is a **public demo & timestamp anchor** for **SwarmPlug ver0.1**.  
 > It demonstrates core capabilities and interfaces, **without exposing the commercial core implementation**.
+![MyVideo_1](https://github.com/user-attachments/assets/b9444de8-d616-4299-8397-fcf16fdf4df1)
 
 ---
 
