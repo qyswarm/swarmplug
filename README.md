@@ -1,61 +1,177 @@
-# swarmplug
-# SwarmPlug (Public Demo Anchor)
-SwarmPlug — minimal cross-device ROS1 swarm connectivity demo
+SwarmPlug
 
-SwarmPlug is a plug-and-play connectivity layer for ROS1-based agents, designed to help multiple ROS masters associate and share selected ROS interfaces across a swarm environment.
-(Initial public release: 2026-02)
+SwarmPlug is a plug-and-play connectivity layer for ROS1-based multi-agent systems,
+designed to enable decentralized association, introspection, and coordination across heterogeneous robotic swarms.
 
-> This repository is a **capability demo & public timestamp anchor** for SwarmPlug ver0.1.  
-> It does **NOT** contain the commercial core implementation.
+🚩 This repository is a public demo & timestamp anchor for SwarmPlug ver0.1.
+It demonstrates core capabilities and interfaces, without exposing the commercial core implementation.
 
-## What ver0.1 proves
-- Cross-device association workflow for a minimal swarm setup
-- Swarm-side introspection via CLI (nodes / topics / parameters)
-- End-to-end “hello world” across multiple machines running ROS1
+1. What does SwarmPlug do?
 
-## Quick demo (CLI examples)
+SwarmPlug focuses on one fundamental problem in swarm robotics:
+
+How can multiple ROS-based agents, running independent ROS masters on different devices, discover each other and share selected ROS interfaces in a decentralized way?
+
+SwarmPlug provides:
+
+A lightweight association layer between devices
+
+Unified introspection of swarm-wide ROS entities
+
+A simple CLI interface to inspect swarm state
+
+No cloud, no central server, no monolithic ROS master.
+
+2. What ver0.1 proves
+
+This ver0.1 demo validates the following capabilities:
+
+✅ Cross-device association between multiple ROS1 nodes
+
+✅ Swarm-wide discovery of:
+
+ROS nodes
+
+ROS topics
+
+ROS parameters
+
+✅ Command-line introspection of swarm state
+
+✅ End-to-end “hello world” topic exchange across devices
+
+This version focuses on connectivity and observability, not on control or task logic.
+
+3. Repository scope
+Included in this repository
+
+📄 Documentation and usage examples
+
+🧩 High-level architecture description
+
+🖥 CLI command demonstrations
+
+🕒 Public release timestamp (ver0.1)
+
+Not included in this repository
+
+❌ Core synchronization algorithms
+
+❌ Commercial SwarmPlug implementation
+
+❌ Protocol adapters and internal optimizations
+
+❌ Appliance / firmware images
+
+This separation is intentional and aligns with the commercial roadmap.
+
+4. Architecture overview (high level)
+
+SwarmPlug runs locally on each device, alongside the local ROS master.
+
+Each instance:
+
+Interfaces with its local ROS graph
+
+Participates in a decentralized association process
+
+Exposes a unified swarm view through a CLI
+```sql
+ROS Nodes  →  Local ROS Master
+                │
+                ▼
+           SwarmPlug Module
+                │
+      ── Association Layer ──
+                │
+           Swarm-wide View
+                │
+                ▼
+           swarmplug CLI
+
+```
+5. CLI demo (ver0.1)
+
+The following commands illustrate the ver0.1 demo behavior.
+
+List swarm members
 ```bash
-# list known swarm members
 swarmplug nodes
+```
+List visible ROS topics across the swarm
+```bash
 
-# list visible topics across the associated swarm
 swarmplug topics
 
-# echo a topic
+```
+Echo a topic from the swarm
+```bash
 swarmplug echo /topic1
+```
 
-# list ROS parameters discovered
+List ROS parameters discovered in the swarm
+```bash
 swarmplug parameters
 
-# read one parameter
+```
+Read a specific parameter
+```bash
 swarmplug echo /turtlesim/background_b
 
+```
+These commands allow developers to inspect swarm state without manually logging into each device.
 
-Repository scope
+6. Typical demo scenario
 
-✅ Included:
+A minimal demonstration setup may include:
 
-Demo documentation
+Device A: ROS1 node publishing /topic1
 
-Architecture notes (high-level)
+Device B: SwarmPlug-enabled node associated with A
 
-CLI usage examples / screenshots
+Device C: Another ROS1 node joining later
 
-❌ Not included:
+After association:
 
-Core synchronization logic
+All participating devices can observe selected ROS entities
 
-Commercial packaging / appliance image
+CLI commands return a swarm-consistent view
 
-Protocol/adapter internals
+This validates decentralized discovery and visibility.
 
-Status
+7. Current status
 
-Public anchor release: ver0.1
+Public demo release: ver0.1
 
-Next milestone: ver0.2 (feature expansion & stability)
+Focus: association & introspection
 
-License
+Next milestone: ver0.2 (feature expansion & stability improvements)
 
-This repository is provided for demonstration purposes only.
-Commercial use of SwarmPlug core requires authorization.
+The roadmap prioritizes robustness, modularity, and compatibility with heterogeneous robotic platforms.
+
+8. License & usage
+
+This repository is provided for demonstration and evaluation purposes only.
+
+Commercial use of SwarmPlug core requires authorization
+
+Internal implementations are not open-sourced in this repository
+
+9. Contact
+
+For collaboration, evaluation, or commercial inquiries:
+
+📧 qyswarm@163.com
+
+
+
+
+
+
+
+
+
+
+
+
+
