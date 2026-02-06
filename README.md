@@ -27,3 +27,33 @@ swarmplug parameters
 
 # read one parameter
 swarmplug echo /turtlesim/background_b
+
+
+Repository scope
+
+✅ Included:
+
+Demo documentation
+
+Architecture notes (high-level)
+
+CLI usage examples / screenshots
+
+❌ Not included:
+
+Core synchronization logic
+
+Commercial packaging / appliance image
+
+Protocol/adapter internals
+
+Status
+
+Public anchor release: ver0.1
+
+Next milestone: ver0.2 (feature expansion & stability)
+
+License
+
+This repository is provided for demonstration purposes only.
+Commercial use of SwarmPlug core requires authorization.
