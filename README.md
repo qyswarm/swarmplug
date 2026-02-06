@@ -22,7 +22,7 @@ A simple CLI interface to inspect swarm state
 
 No cloud, no central server, no monolithic ROS master.
 
-2. What ver0.1 proves
+## 2. What ver0.1 proves
 
 This ver0.1 demo validates the following capabilities:
 
@@ -42,7 +42,7 @@ ROS parameters
 
 This version focuses on connectivity and observability, not on control or task logic.
 
-3. Repository scope
+## 3. Repository scope
 Included in this repository
 
 📄 Documentation and usage examples
@@ -65,7 +65,7 @@ Not included in this repository
 
 This separation is intentional and aligns with the commercial roadmap.
 
-4. Architecture overview (high level)
+## 4. Architecture overview (high level)
 
 SwarmPlug runs locally on each device, alongside the local ROS master.
 
@@ -90,7 +90,7 @@ ROS Nodes  →  Local ROS Master
            swarmplug CLI
 
 ```
-5. CLI demo (ver0.1)
+## 5. CLI demo (ver0.1)
 
 The following commands illustrate the ver0.1 demo behavior.
 
@@ -121,7 +121,7 @@ swarmplug echo /turtlesim/background_b
 ```
 These commands allow developers to inspect swarm state without manually logging into each device.
 
-6. Typical demo scenario
+## 6. Typical demo scenario
 
 A minimal demonstration setup may include:
 
@@ -139,7 +139,7 @@ CLI commands return a swarm-consistent view
 
 This validates decentralized discovery and visibility.
 
-7. Current status
+## 7. Current status
 
 Public demo release: ver0.1
 
@@ -149,7 +149,7 @@ Next milestone: ver0.2 (feature expansion & stability improvements)
 
 The roadmap prioritizes robustness, modularity, and compatibility with heterogeneous robotic platforms.
 
-8. License & usage
+## 8. License & usage
 
 This repository is provided for demonstration and evaluation purposes only.
 
@@ -157,7 +157,7 @@ Commercial use of SwarmPlug core requires authorization
 
 Internal implementations are not open-sourced in this repository
 
-9. Contact
+## 9. Contact
 
 For collaboration, evaluation, or commercial inquiries:
 
