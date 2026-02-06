@@ -2,6 +2,7 @@
 # SwarmPlug (Public Demo Anchor)
 
 SwarmPlug is a plug-and-play connectivity layer for ROS1-based agents, designed to help multiple ROS masters associate and share selected ROS interfaces across a swarm environment.
+(Initial public release: 2026-02)
 
 > This repository is a **capability demo & public timestamp anchor** for SwarmPlug ver0.1.  
 > It does **NOT** contain the commercial core implementation.
