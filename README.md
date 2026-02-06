@@ -1,6 +1,6 @@
 # swarmplug
 # SwarmPlug (Public Demo Anchor)
-SwarmPlug — **minimal cross-device **ROS1 swarm connectivity demo
+SwarmPlug — minimal cross-device ROS1 swarm connectivity demo
 
 SwarmPlug is a plug-and-play connectivity layer for ROS1-based agents, designed to help multiple ROS masters associate and share selected ROS interfaces across a swarm environment.
 (Initial public release: 2026-02)
