@@ -1,0 +1,147 @@
+```
+~/bin/swarmplug
+
+```
+
+
+
+```bash
+#!/usr/bin/env bash
+set -euo pipefail
+
+ENV_FILE="$HOME/.swarmplug_env.sh"
+STARTER="$HOME/swarmplug_start.sh"
+AUTO=0
+WAIT_SEC=15
+
+die() { echo "[swarmplug] $*" >&2; exit 2; }
+
+master_reachable() {
+  local uri="${1:-}"
+  [[ -z "$uri" ]] && return 1
+  local host port
+  host="$(echo "$uri" | sed -E 's#^https?://([^:/]+).*#\1#')"
+  port="$(echo "$uri" | sed -E 's#^https?://[^:/]+:([0-9]+).*#\1#')"
+  [[ "$port" == "$uri" ]] && port="11311"
+  timeout 0.3 bash -c "echo > /dev/tcp/${host}/${port}" &>/dev/null
+}
+
+usage() {
+  cat <<EOF
+Usage:
+  swarmplug [--auto] [--wait SEC] <command> [args...]
+
+Product subcommands:
+  swarmplug [--auto] topics
+  swarmplug [--auto] nodes
+  swarmplug [--auto] parameters | params
+  swarmplug [--auto] echo <topic>
+  swarmplug [--auto] info <topic>
+  swarmplug [--auto] get <param>
+  swarmplug [--auto] set <param> <value>
+
+Examples:
+  swarmplug rostopic list
+  swarmplug --auto rostopic echo /topic1
+
+  swarmplug topics
+  swarmplug nodes
+  swarmplug parameters
+  swarmplug echo /topic1
+  swarmplug info /topic1
+
+  swarmplug get /turtlesim/background_b
+  swarmplug set /turtlesim/background_b 255
+
+Notes:
+  - Auto-sources: $ENV_FILE
+  - If not ready:
+      - without --auto: prints how to run $STARTER
+      - with --auto: runs $STARTER in background and waits up to SEC
+EOF
+}
+
+# ---- parse flags ----
+ARGS=()
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    -h|--help) usage; exit 0;;
+    --auto) AUTO=1; shift;;
+    --wait) WAIT_SEC="${2:-15}"; shift 2;;
+    --) shift; break;;
+    *) ARGS+=("$1"); shift;;
+  esac
+done
+if [[ $# -gt 0 ]]; then
+  for x in "$@"; do ARGS+=("$x"); done
+fi
+[[ ${#ARGS[@]} -ge 1 ]] || { usage; exit 1; }
+
+# ---- subcommand mapping ----
+case "${ARGS[0]}" in
+  topics)
+    ARGS=(rostopic list)
+    ;;
+  nodes)
+    ARGS=(rosnode list)
+    ;;
+  parameters|params)
+    ARGS=(rosparam list)
+    ;;
+  echo)
+    if [[ ${#ARGS[@]} -lt 2 ]]; then die "Usage: swarmplug echo /topic_name"; fi
+    ARGS=(rostopic echo "${ARGS[1]}")
+    ;;
+  info)
+    if [[ ${#ARGS[@]} -lt 2 ]]; then die "Usage: swarmplug info /topic_name"; fi
+    ARGS=(rostopic info "${ARGS[1]}")
+    ;;
+  get)
+    if [[ ${#ARGS[@]} -lt 2 ]]; then die "Usage: swarmplug get /param_name"; fi
+    ARGS=(rosparam get "${ARGS[1]}")
+    ;;
+  set)
+    if [[ ${#ARGS[@]} -lt 3 ]]; then die "Usage: swarmplug set /param_name value"; fi
+    ARGS=(rosparam set "${ARGS[1]}" "${ARGS[2]}")
+    ;;
+esac
+
+# ---- source env if exists ----
+if [[ -f "$ENV_FILE" ]]; then
+  # shellcheck disable=SC1090
+  source "$ENV_FILE"
+fi
+
+# ---- ensure ready ----
+if ! master_reachable "${ROS_MASTER_URI:-}"; then
+  if [[ "$AUTO" -ne 1 ]]; then
+    die "Not ready (ROS master unreachable). Try: $STARTER  (and wait for READY), then retry."
+  fi
+
+  [[ -x "$STARTER" ]] || die "Not ready and starter not found/executable: $STARTER"
+
+  # start starter in background if not running
+  if ! pgrep -f "swarmplug_start.sh" >/dev/null 2>&1; then
+    nohup "$STARTER" >/tmp/swarmplug_start.log 2>&1 &
+  fi
+
+  # wait for env + master reachable
+  end=$((SECONDS + WAIT_SEC))
+  while (( SECONDS < end )); do
+    if [[ -f "$ENV_FILE" ]]; then
+      # shellcheck disable=SC1090
+      source "$ENV_FILE"
+      if master_reachable "${ROS_MASTER_URI:-}"; then
+        break
+      fi
+    fi
+    sleep 1
+  done
+
+  master_reachable "${ROS_MASTER_URI:-}" || die "Auto-start timeout after ${WAIT_SEC}s. Check: /tmp/swarmplug_start.log"
+fi
+
+# ---- execute ----
+exec "${ARGS[@]}"
+
+```
