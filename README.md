@@ -26,7 +26,7 @@ SwarmPlug is **not**:
 
 Instead, it provides a **progressively layered infrastructure**, starting from safe association and moving toward structured coordination.
 
-2. Repository Scope
+# 2. Repository Scope
 
 This repository is **documentation-first.**
 
@@ -205,7 +205,7 @@ These demos are **read-only and observational.**
 
 >This document will be **updated with each new SwarmPlug version** to reflect scope, responsibilities, and roadmap changes.
 
-7. License & Usage
+# 7. License & Usage
 
 This repository is provided for **demonstration and evaluation purposes only.**
 
@@ -213,7 +213,7 @@ This repository is provided for **demonstration and evaluation purposes only.**
     
    - Internal implementations are not open-sourced here
 
-8. Contact
+# 8. Contact
 
 For collaboration, evaluation, or commercial inquiries:
 
