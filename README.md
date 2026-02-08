@@ -1,199 +1,208 @@
-# SwarmPlug
 
-**SwarmPlug** is a plug-and-play connectivity layer for **ROS1-based multi-agent systems**,  
-designed to enable decentralized **association, introspection, and coordination** across heterogeneous robotic swarms.
+# SwarmPlug v0.2
+> Target audience: ROS system engineers, researchers, and platform architects.
 
-> 🚩 This repository is a **public demo & timestamp anchor** for **SwarmPlug ver0.1**.  
-> It demonstrates core capabilities and interfaces, **without exposing the commercial core implementation**.
-![MyVideo_1](https://github.com/user-attachments/assets/b9444de8-d616-4299-8397-fcf16fdf4df1)
+> **Canonical Naming & Host Identity Layer for ROS Systems**
 
----
+SwarmPlug v0.2 is an **engineering-stable milestone** that introduces  
+**canonical naming** and **explicit host identity** for ROS-based systems,  
+laying the structural foundation for future cross-host coordination, replication,
+and heterogeneous system integration.
 
-## 1. What does SwarmPlug do?
+This version does **not** add new communication mechanisms.  
+Instead, it focuses on **making the system observable, identifiable, and manageable**.
 
-SwarmPlug focuses on one fundamental problem in swarm robotics:
-
-> **How can multiple ROS-based agents, running independent ROS masters on different devices, discover each other and share selected ROS interfaces in a decentralized way?**
-
-SwarmPlug provides:
-
-- A lightweight **association layer** between devices
-    
-- Unified **introspection** of swarm-wide ROS entities
-    
-- A simple **CLI interface** to inspect swarm state
-    
-
-No cloud, no central server, no monolithic ROS master.
 
 ---
 
-## 2. What ver0.1 proves
+## What is SwarmPlug?
 
-This ver0.1 demo validates the following capabilities:
+**SwarmPlug** is a plug-and-play ROS extension module that runs on a separate device
+and connects to an existing ROS host **without modifying the host system**.
 
-- ✅ Cross-device association between multiple ROS1 nodes
-    
-- ✅ Swarm-wide discovery of:
-    
-    - ROS nodes
-        
-    - ROS topics
-        
-    - ROS parameters
-        
-- ✅ Command-line introspection of swarm state
-    
-- ✅ End-to-end “hello world” topic exchange across devices
-    
+- No ROS nodes are injected
+- No Multi-Master
+- No intrusion into the host
+- Single, controlled ROS Master binding
 
-This version focuses on **connectivity and observability**, not on control or task logic.
+SwarmPlug acts as a **sidecar system interface**, not a replacement for ROS.
 
 ---
 
-## 3. Repository scope
+## What’s New in v0.2
 
-### Included in this repository
+### 1. Canonical Naming (Core Feature)
 
-- 📄 Documentation and usage examples
-    
-- 🧩 High-level architecture description
-    
-- 🖥 CLI command demonstrations
-    
-- 🕒 Public release timestamp (ver0.1)
-    
+v0.2 introduces a **canonical naming layer** for ROS resources:
 
-### Not included in this repository
+```
+/sp/<host_id>/<kind>/<ros_path>
+```
 
-- ❌ Core synchronization algorithms
-    
-- ❌ Commercial SwarmPlug implementation
-    
-- ❌ Protocol adapters and internal optimizations
-    
-- ❌ Appliance / firmware images
-    
+Where:
 
-> This separation is intentional and aligns with the commercial roadmap.
+- `<host_id>`: Explicit identity of the ROS host
+- `<kind>`: topic / service / param / node / action
+- `<ros_path>`: Original ROS name (unchanged)
+
+Example:
+```
+/sp/node161/topic/turtle1/cmd_vel
+```
+
+
+Canonical names are **read-only structural references** and do **not** replace native ROS names.
 
 ---
 
-## 4. Architecture overview (high level)
+### 2. Host Identity Abstraction
 
-SwarmPlug runs **locally on each device**, alongside the local ROS master.
+Each SwarmPlug instance exposes an explicit **Host ID**, used consistently across
+canonical naming and system inspection.
 
-Each instance:
+Host ID resolution order:
 
-- Interfaces with its local ROS graph
-    
-- Participates in a decentralized association process
-    
-- Exposes a unified swarm view through a CLI
-    
+1. `--host-id` CLI flag
+2. `SP_HOST_ID` environment variable
+3. System hostname (fallback)
 
-```
-ROS Nodes  →  Local ROS Master
-                │
-                ▼
-           SwarmPlug Module
-                │
-      ── Association Layer ──
-                │
-           Swarm-wide View
-                │
-                ▼
-           swarmplug CLI
-
-```
----
-
-## 5. CLI demo (ver0.1)
-
-The following commands illustrate the ver0.1 demo behavior.
-
-### List swarm members
-
-```
-swarmplug nodes
-```
-
-### List visible ROS topics across the swarm
-
-```
-swarmplug topics
-```
-
-### Echo a topic from the swarm
-```
-swarmplug echo /topic1
-```
-
-### List ROS parameters discovered in the swarm
-
-```
-swarmplug parameters
-
-```
-
-### Read a specific parameter
-
-```
-swarmplug echo /turtlesim/background_b
-```
-
-These commands allow developers to **inspect swarm state without manually logging into each device**.
+This avoids ambiguity in multi-host or multi-plugin environments.
 
 ---
 
-## 6. Typical demo scenario
+### 3. Host Network Self-Description
 
-A minimal demonstration setup may include:
+`swarmplug host info` provides a structured, explainable view of the plugin host:
 
-- Device A: ROS1 node publishing `/topic1`
-    
-- Device B: SwarmPlug-enabled node associated with A
-    
-- Device C: Another ROS1 node joining later
-    
+- Preferred IP (RFC1918, non-virtual)
+- Preferred MAC
+- All IPs / MACs
+- Optional raw network dump (`--all`)
 
-After association:
+Example:
+```
+IP preferred: 192.168.31.161 (iface=wlp3s0)  
+MAC preferred: 1c:1b:b5:6a:b6:8e (iface=wlp3s0)
+```
 
-- All participating devices can observe selected ROS entities
-    
-- CLI commands return a **swarm-consistent view**
-    
 
-This validates decentralized discovery and visibility.
+This is essential for future Mesh, appliance, and multi-NIC deployments.
 
 ---
 
-## 7. Current status
+### 4. Action Structure Inference
 
-- **Public demo release:** ver0.1
+v0.2 adds CLI-level **ROS Action discovery**, with optional strict validation:
+
+```bash
+swarmplug actions
+swarmplug actions --canon
+swarmplug actions --canon --strict-action
+```
+
+This capability is preparatory and does not alter runtime behavior.
+
+## Project Layout (v0.2)
+
+```
+swarmplug/
+├── bin/
+│   └── swarmplug                # Single CLI entry point
+├── bootstrap/
+│   ├── swarmplug_start.sh       # Host discovery & binding
+│   └── scan_ros_masters.py
+├── env/
+│   └── swarmplug_env.sh         # Runtime-generated environment
+├── README.md
+├── VERSION
+└── LICENSE
+
+```
+
+## Usage Overview
+
+### Environment Setup (Required)
+
+Add the following to your shell configuration:
+```
+export PATH="$HOME/swarmplug/bin:$PATH"
+export SP_HOST_ID=node161   # example: robot001 / carA / host-alpha
+
+```
+
+Reload:
+```
+source ~/.bashrc
+hash -r
+```
+
+### Basic Commands
+```
+swarmplug --auto topics
+swarmplug topics --canon
+swarmplug services --canon
+swarmplug parameters --canon
+
+```
+### Host Inspection
+```
+swarmplug --auto host info
+swarmplug --auto host info --all
+
+```
+
+### Actions
+```
+swarmplug actions
+swarmplug actions --canon
+swarmplug actions --canon --strict-action
+
+```
+
+## Design Principles (v0.2)
+
+- **Non-intrusive**: No changes to ROS host
     
-- **Focus:** association & introspection
+- **Structural, not behavioral**: Observe and describe, do not decide
     
-- **Next milestone:** ver0.2 (feature expansion & stability improvements)
+- **Reversible & transparent**: Canonical names always map back to ROS names
+    
+- **Version-scoped**: No premature features
+
+## What v0.2 Intentionally Does NOT Do
+
+- No parameter semantic unification
+    
+- No cross-host synchronization
+    
+- No Mesh / blockchain / consensus
+    
+- No automatic control or decision-making
     
 
-The roadmap prioritizes robustness, modularity, and compatibility with heterogeneous robotic platforms.
+These are reserved for later versions.
 
----
+## Version Status
+```
+Version: v0.2.0
+Status : DONE
+Type   : Engineering Stable / Structural Milestone
 
-## 8. License & usage
+```
+## License
+See LICENSE file for details.
 
-This repository is provided **for demonstration and evaluation purposes only**.
+## Roadmap Context
 
-- Commercial use of SwarmPlug core requires authorization
+- **v0.1**: Host discovery and safe binding
     
-- Internal implementations are not open-sourced in this repository
+- **v0.2**: Canonical naming & host identity (this version)
     
+- **v0.3**: Unified parameter / state schema (planned)
+    
+- **v1.x**: Cross-host coordination and robustness layers
 
----
+> **SwarmPlug v0.2 answers one question clearly:  
+> “What exists in this system, and who does it belong to?”**
 
-## 9. Contact
-
-For collaboration, evaluation, or commercial inquiries:
-
-📧 **qyswarm@163.com**
+Nothing more. Nothing less.
