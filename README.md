@@ -1,146 +1,159 @@
-# SwarmPlug
+# SwarmPlug ver0.3
 
-### Versioned Infrastructure for Semantic Normalization in ROS Systems
-
----
-
-
-## 1. Statement
-
-SwarmPlug is a **versioned infrastructure project**.
-
-It defines deterministic layers for semantic normalization  
-in heterogeneous ROS-based environments.
-
-SwarmPlug does **not**:
-
-- Replace ROS
-    
-- Define control logic
-    
-- Implement coordination strategies
-    
-- Provide intelligence systems
-    
-
-SwarmPlug defines infrastructure boundaries.
+**Semantic Snapshot Infrastructure**
 
 ---
 
-## 2. Development Model
+## Statement
 
-SwarmPlug evolves through **explicit version layers**.
+SwarmPlug ver0.3 defines a deterministic semantic snapshot model  
+for heterogeneous ROS-based systems.
 
-Each version:
+It does not coordinate.  
+It does not transmit.  
+It does not decide.
 
-- Has a narrowly defined responsibility
-    
-- Is boundary-limited
-    
-- Is version-scoped
-    
-- Does not expand retroactively
-    
-
-New capabilities are introduced only through new versions.
+It standardizes.
 
 ---
 
-## 3. Version Index
+## Problem
+
+Robotic systems expose runtime state in inconsistent forms:
+
+- Different topic names
+    
+- Different coordinate conventions
+    
+- Different mode representations
+    
+- Different task encodings
+    
+
+Without semantic normalization, higher-level coordination becomes system-specific.
+
+---
+
+## Position
+
+SwarmPlug ver0.3 introduces a neutral semantic layer  
+between ROS runtime and distributed coordination.
+
+`Host Runtime  →  Semantic Abstraction  →  Snapshot`
+
+ver0.3 completes the semantic abstraction layer.
+
+---
+
+## Architecture (Conceptual)
+
+```mermaid
+flowchart TB
+
+  subgraph L1["Host Runtime"]
+    A1["ROS Topics / Services / Params"]
+  end
+
+  subgraph L2["Semantic Abstraction"]
+    B1["Canonical Identity"]
+    B2["Unified State Fields"]
+    B3["Deterministic Trigger Model"]
+  end
+
+  subgraph L3["Snapshot (v0.3 Schema)"]
+    C1["meta + identity + state"]
+  end
+
+  A1 --> B1 --> C1
+  A1 --> B2 --> C1
+  B3 --> C1
+
+```
+
+---
+
+## Determinism
+
+Snapshot generation follows two defined triggers:
+
+- Event-based
+    
+- Periodic
+    
+
+Given identical host state and trigger,  
+the snapshot structure remains deterministic.
+
+---
+
+## Schema Boundary
+
+ver0.3 formalizes:
+
+- `meta`
+    
+- `identity`
+    
+- `state`
+    
+
+Canonical state fields include:
+
+- pose
+    
+- twist
+    
+- mode
+    
+- task_state (optional)
+    
+
+The schema is versioned.
+
+---
+
+## Scope Limitation
+
+SwarmPlug ver0.3 does not include:
+
+- Network transport
+    
+- Mesh communication
+    
+- Blockchain anchoring
+    
+- Decision logic
+    
+- Control loops
+    
+
+Those layers are out of scope.
+
+---
+
+## Version Context
 
 |Version|Responsibility|
 |---|---|
-|**ver0.1**|Host attachment|
-|**ver0.2**|Canonical identity|
-|**ver0.3**|Semantic snapshot model|
-
-Future versions will be introduced as independent milestones.
+|0.1|Host connection|
+|0.2|Canonical naming|
+|0.3|Semantic snapshot definition|
 
 ---
 
-## 4. Layered Direction
-
-SwarmPlug development follows a strict structural progression:
-
-```
-Attachment
-    ↓
-Identity
-    ↓
-Semantics
-    ↓
-Future Layers
-
-```
-
-Each layer must remain:
-
-- Deterministic
-    
-- Versioned
-    
-- Infrastructure-oriented
-    
-- Boundary-defined
-    
-
----
-
-## 5. Scope Discipline
-
-SwarmPlug explicitly separates normalization infrastructure from:
-
-- Runtime control systems
-    
-- Transport mechanisms
-    
-- Distributed coordination logic
-    
-- Intelligence or learning layers
-    
-- External anchoring or persistence systems
-    
-
-These domains are outside the core normalization layer.
-
----
-
-## 6. Stability Principle
-
-Once defined, a version:
-
-- Remains version-scoped
-    
-- Remains boundary-limited
-    
-- Does not absorb new responsibilities
-    
-
-Evolution occurs by addition, not modification.
-
----
-
-## 7. Repository Structure
-```
-/ver0.1    → Host attachment layer 
-/ver0.2    → Canonical identity layer 
-/ver0.3    → Semantic snapshot layer
-```
-
-Each directory documents a completed infrastructure layer.
-
-Subsequent versions will be added as independent directories.
-
----
-
-## 8. Foundational Principle
+## Principle
 
 Infrastructure precedes coordination.  
 Normalization precedes intelligence.  
-Versioning precedes expansion.
+Determinism precedes distribution.
 
-SwarmPlug develops by structure, not by feature accumulation.
+ver0.3 establishes the normalization layer.
+
+
+
 ## Contact
-If you are evaluating SwarmPlug for research or engineering use,feel free to reach out at: swarmplug@gmail.com
 
-**Note:SwarmPlug is developed under a boundary-first philosophy. Core implementation remains private by design.**
+
+If you are evaluating SwarmPlug for research or engineering use,feel free to reach out at: 
+ 
+📧 **swarmplug@gmail.com**
