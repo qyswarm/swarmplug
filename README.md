@@ -1,208 +1,130 @@
+# SwarmPlug ver0.2
 
-# SwarmPlug v0.2
-> Target audience: ROS system engineers, researchers, and platform architects.
-
-> **Canonical Naming & Host Identity Layer for ROS Systems**
-
-SwarmPlug v0.2 is an **engineering-stable milestone** that introduces  
-**canonical naming** and **explicit host identity** for ROS-based systems,  
-laying the structural foundation for future cross-host coordination, replication,
-and heterogeneous system integration.
-
-This version does **not** add new communication mechanisms.  
-Instead, it focuses on **making the system observable, identifiable, and manageable**.
-
+**Canonical Naming Infrastructure**
 
 ---
 
-## What is SwarmPlug?
+## Statement
 
-**SwarmPlug** is a plug-and-play ROS extension module that runs on a separate device
-and connects to an existing ROS host **without modifying the host system**.
+SwarmPlug ver0.2 introduces a canonical identity and naming layer  
+above host attachment.
 
-- No ROS nodes are injected
-- No Multi-Master
-- No intrusion into the host
-- Single, controlled ROS Master binding
+It does not snapshot.  
+It does not transmit.  
+It does not coordinate.
 
-SwarmPlug acts as a **sidecar system interface**, not a replacement for ROS.
-
----
-
-## What’s New in v0.2
-
-### 1. Canonical Naming (Core Feature)
-
-v0.2 introduces a **canonical naming layer** for ROS resources:
-
-```
-/sp/<host_id>/<kind>/<ros_path>
-```
-
-Where:
-
-- `<host_id>`: Explicit identity of the ROS host
-- `<kind>`: topic / service / param / node / action
-- `<ros_path>`: Original ROS name (unchanged)
-
-Example:
-```
-/sp/node161/topic/turtle1/cmd_vel
-```
-
-
-Canonical names are **read-only structural references** and do **not** replace native ROS names.
+It standardizes identity.
 
 ---
 
-### 2. Host Identity Abstraction
+## Problem
 
-Each SwarmPlug instance exposes an explicit **Host ID**, used consistently across
-canonical naming and system inspection.
+ROS systems use inconsistent naming across:
 
-Host ID resolution order:
+- Devices
+    
+- Networks
+    
+- Deployments
+    
 
-1. `--host-id` CLI flag
-2. `SP_HOST_ID` environment variable
-3. System hostname (fallback)
-
-This avoids ambiguity in multi-host or multi-plugin environments.
+Without canonical identity,  
+cross-system semantic alignment becomes ambiguous.
 
 ---
 
-### 3. Host Network Self-Description
+## Position
 
-`swarmplug host info` provides a structured, explainable view of the plugin host:
+SwarmPlug ver0.2 defines a stable identity anchor  
+independent of host runtime naming.
 
-- Preferred IP (RFC1918, non-virtual)
-- Preferred MAC
-- All IPs / MACs
-- Optional raw network dump (`--all`)
+`ROS Runtime → Host Attachment → Canonical Identity`
 
-Example:
-```
-IP preferred: 192.168.31.161 (iface=wlp3s0)  
-MAC preferred: 1c:1b:b5:6a:b6:8e (iface=wlp3s0)
-```
-
-
-This is essential for future Mesh, appliance, and multi-NIC deployments.
+ver0.2 completes the identity normalization layer.
 
 ---
 
-### 4. Action Structure Inference
+## Architecture (Conceptual)
 
-v0.2 adds CLI-level **ROS Action discovery**, with optional strict validation:
+```mermaid
+flowchart TB
 
-```bash
-swarmplug actions
-swarmplug actions --canon
-swarmplug actions --canon --strict-action
-```
+  subgraph L1["Host Runtime"]
+    A1["ROS Topics / Nodes"]
+  end
 
-This capability is preparatory and does not alter runtime behavior.
+  subgraph L2["Host Attachment (ver0.1)"]
+    B1["Discovery Layer"]
+  end
 
-## Project Layout (v0.2)
+  subgraph L3["Canonical Identity (ver0.2)"]
+    C1["host_id"]
+    C2["node_id"]
+    C3["Canonical Naming Rules"]
+  end
 
-```
-swarmplug/
-├── bin/
-│   └── swarmplug                # Single CLI entry point
-├── bootstrap/
-│   ├── swarmplug_start.sh       # Host discovery & binding
-│   └── scan_ros_masters.py
-├── env/
-│   └── swarmplug_env.sh         # Runtime-generated environment
-├── README.md
-├── VERSION
-└── LICENSE
+  A1 --> B1 --> C1
+  B1 --> C2
+  C1 --> C3
 
 ```
 
-## Usage Overview
+---
 
-### Environment Setup (Required)
+## Determinism
 
-Add the following to your shell configuration:
-```
-export PATH="$HOME/swarmplug/bin:$PATH"
-export SP_HOST_ID=node161   # example: robot001 / carA / host-alpha
+Given identical host configuration,  
+ver0.2 produces identical canonical identity anchors.
 
-```
+Identity is stable across:
 
-Reload:
-```
-source ~/.bashrc
-hash -r
-```
-
-### Basic Commands
-```
-swarmplug --auto topics
-swarmplug topics --canon
-swarmplug services --canon
-swarmplug parameters --canon
-
-```
-### Host Inspection
-```
-swarmplug --auto host info
-swarmplug --auto host info --all
-
-```
-
-### Actions
-```
-swarmplug actions
-swarmplug actions --canon
-swarmplug actions --canon --strict-action
-
-```
-
-## Design Principles (v0.2)
-
-- **Non-intrusive**: No changes to ROS host
+- Reboots
     
-- **Structural, not behavioral**: Observe and describe, do not decide
+- Network changes
     
-- **Reversible & transparent**: Canonical names always map back to ROS names
-    
-- **Version-scoped**: No premature features
-
-## What v0.2 Intentionally Does NOT Do
-
-- No parameter semantic unification
-    
-- No cross-host synchronization
-    
-- No Mesh / blockchain / consensus
-    
-- No automatic control or decision-making
+- Deployment contexts
     
 
-These are reserved for later versions.
+---
 
-## Version Status
-```
-Version: v0.2.0
-Status : DONE
-Type   : Engineering Stable / Structural Milestone
+## Scope Limitation
 
-```
-## License
-See LICENSE file for details.
+SwarmPlug ver0.2 does not include:
 
-## Roadmap Context
-
-- **v0.1**: Host discovery and safe binding
+- State abstraction
     
-- **v0.2**: Canonical naming & host identity (this version)
+- Snapshot schema
     
-- **v0.3**: Unified parameter / state schema (planned)
+- Communication layers
     
-- **v1.x**: Cross-host coordination and robustness layers
+- Blockchain anchoring
+    
+- Decision mechanisms
+    
 
-> **SwarmPlug v0.2 answers one question clearly:  
-> “What exists in this system, and who does it belong to?”**
+---
 
-Nothing more. Nothing less.
+## Version Context
+
+|Version|Responsibility|
+|---|---|
+|0.1|Host connection|
+|0.2|Canonical naming|
+|0.3|Semantic snapshot|
+
+---
+
+## Principle
+
+Identity precedes semantics.  
+Normalization precedes distribution.
+
+ver0.2 establishes the identity layer.
+
+
+
+## Contact
+
+If you are evaluating SwarmPlug for research or engineering use,feel free to reach out at: 
+
+📧 **swarmplug@gmail.com**
