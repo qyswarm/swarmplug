@@ -1,222 +1,146 @@
 # SwarmPlug
 
-**A Sidecar Infrastructure for Structural Clarity in ROS Systems**
+### Versioned Infrastructure for Semantic Normalization in ROS Systems
 
-SwarmPlug is a plug-and-play sidecar layer for ROS1-based systems, designed to enable **decentralized association, structured introspection, and explicit system attribution** across heterogeneous robotic devices — without modifying existing ROS hosts.
+---
 
-🚩 **This repository serves as the main public documentation hub and long-term reference for SwarmPlug.**
 
-It provides architectural context, version roles, and demo references, while **intentionally excluding commercial core implementations.**
+## 1. Statement
 
-📌 This README is a **living document** and will be updated as new SwarmPlug versions are released.
+SwarmPlug is a **versioned infrastructure project**.
 
-# 1. What is SwarmPlug?
+It defines deterministic layers for semantic normalization  
+in heterogeneous ROS-based environments.
 
-SwarmPlug addresses a foundational systems question in distributed robotics:
+SwarmPlug does **not**:
 
->**How can independent ROS-based systems be observed, identified, and reasoned about in a decentralized and non-intrusive way?**
-
-SwarmPlug is **not**:
-
-- a ROS replacement
-
-- a multi-master framework
-
-- a control or decision-making layer
-
-Instead, it provides a **progressively layered infrastructure**, starting from safe association and moving toward structured coordination.
-
-# 2. Repository Scope
-
-This repository is **documentation-first.**
-
-It exists to:
-
-- Define the **overall architecture and design philosophy**
-
-- Clarify the **role of each released version**
-
-- Provide **references to public demos**
-
-- Act as a **public timestamp anchor** for SwarmPlug evolution
-
-### Included in this repository
-
-📄 Architecture & design documentation
-
-🧩 Version-level responsibility definitions
-
-🎥 References to demo repositories and videos
-
-🕒 Public release milestones
-
-### Not included in this repository
-
-❌ Core synchronization or coordination algorithms
-
-❌ Internal protocols or optimizations
-
-❌ Commercial SwarmPlug implementation
-
-❌ Appliance images or firmware
-
-This separation is intentional and aligned with the commercial roadmap.
-
-## 3. Version Overview
-
-SwarmPlug is developed as a **layered system**, where each version introduces **one clearly scoped responsibility**.
-
-### v0.1 — Host Discovery & Safe Association
-
-**Status**: Released (Demo)
-
-**Purpose:**
-Establish a reliable and reproducible way for independent ROS1 systems to discover and associate with each other.
-
-**What v0.1 proves:**
-
-✅ Cross-device association between ROS1 systems
-
-✅ Swarm-wide discovery of:
-
-    - ROS nodes
-
-    - ROS topics
-
-    - ROS parameters
-
-✅ CLI-based introspection of distributed system state
-
-✅ End-to-end “hello world” visibility across devices
-
-v0.1 focuses on **connectivity and observability**, not control or task logic.
-
-### v0.2 — Canonical Naming & Host Identity
-
-**Status**: Released (Engineering Stable)
-
-**Purpose:**
-Make ROS system resources **explicitly attributable** to a specific host.
-
-**What v0.2 introduces:**
-
-- Canonical naming layer
-    ```
-    /sp/<host_id>/<kind>/<ros_path>
-    ```
-- Explicit host identity abstraction
-
-- Read-only system introspection
-
-- Host network self-description (preferred IP / MAC)
-
-**What v0.2 does NOT do:**
-
-- No control or coordination
-
-- No cross-host synchronization
-
-- No semantic unification
-
-📎 A recorded v0.2 demo is available in the separate repository:
-👉 **swarmplug-demo**
-
-### v0.3 — Unified Parameter & State Schema (Planned)
-
-**Status:** Planned
-
-**Purpose:**
-Introduce a unified, host-agnostic representation of parameters and system state.
-
-**Planned direction:**
-
-    - Structured parameter/state schemas (e.g. YAML / JSON)
-
-    - Clear separation between:
-
-        - raw ROS parameters
-        
-        - semantic system state
-
-v0.3 focuses on **meaning and structure**, not transport or coordination.
-
-### v1.x — Cross-Host Coordination & Robustness (Planned)
-
-**Status:** Planned
-
-**Purpose:**
-Enable controlled and explicit coordination across multiple ROS hosts.
-
-**Potential scope:**
-
-    - Cross-host state propagation
+- Replace ROS
     
-    - Robustness and recovery mechanisms
+- Define control logic
     
-    - Optional transport backends
-
-v1.x is **opt-in** and strictly layered on top of earlier versions.
-
-## 4. Architecture (High-Level)
-
-SwarmPlug runs locally on each device, alongside the **local ROS master**.
-
-Each instance:
-
-    - Interfaces with its **local ROS graph**
+- Implement coordination strategies
     
-    - Participates in a **decentralized association process**
+- Provide intelligence systems
     
-    - Exposes a structured, system-wide view via CLI
 
-ROS Nodes  →  Local ROS Master
-                  │
-                  ▼
-             SwarmPlug Module
-                  │
-        ── Association / Structure Layer ──
-                  │
-             System-wide View
-                  │
-                  ▼
-             swarmplug CLI
+SwarmPlug defines infrastructure boundaries.
 
-## 5. Demo Repositories
+---
 
-Public demo materials are hosted separately to avoid exposing implementation details.
+## 2. Development Model
 
-    - **swarmplug-demo**
+SwarmPlug evolves through **explicit version layers**.
+
+Each version:
+
+- Has a narrowly defined responsibility
     
-        - Recorded demo videos
-        
-        - Demo scenario descriptions
-        
-        - Observable CLI behavior only
-
-These demos are **read-only and observational.**
-
-## 6. Project Status
-
-    - Current released versions: **v0.1, v0.2**
-
-    - Development approach: conservative, layered, system-first
-
-    - README policy:
-
->This document will be **updated with each new SwarmPlug version** to reflect scope, responsibilities, and roadmap changes.
-
-# 7. License & Usage
-
-This repository is provided for **demonstration and evaluation purposes only.**
-
-   - Commercial use of SwarmPlug core requires authorization
+- Is boundary-limited
     
-   - Internal implementations are not open-sourced here
+- Is version-scoped
+    
+- Does not expand retroactively
+    
 
-# 8. Contact
+New capabilities are introduced only through new versions.
 
-If you are evaluating SwarmPlug for research or engineering use,feel free to reach out at: 
+---
 
-📧 swarmplug@163.com
+## 3. Version Index
 
-📧 swarmplug@gmail.com
+|Version|Responsibility|
+|---|---|
+|**ver0.1**|Host attachment|
+|**ver0.2**|Canonical identity|
+|**ver0.3**|Semantic snapshot model|
+
+Future versions will be introduced as independent milestones.
+
+---
+
+## 4. Layered Direction
+
+SwarmPlug development follows a strict structural progression:
+
+```
+Attachment
+    ↓
+Identity
+    ↓
+Semantics
+    ↓
+Future Layers
+
+```
+
+Each layer must remain:
+
+- Deterministic
+    
+- Versioned
+    
+- Infrastructure-oriented
+    
+- Boundary-defined
+    
+
+---
+
+## 5. Scope Discipline
+
+SwarmPlug explicitly separates normalization infrastructure from:
+
+- Runtime control systems
+    
+- Transport mechanisms
+    
+- Distributed coordination logic
+    
+- Intelligence or learning layers
+    
+- External anchoring or persistence systems
+    
+
+These domains are outside the core normalization layer.
+
+---
+
+## 6. Stability Principle
+
+Once defined, a version:
+
+- Remains version-scoped
+    
+- Remains boundary-limited
+    
+- Does not absorb new responsibilities
+    
+
+Evolution occurs by addition, not modification.
+
+---
+
+## 7. Repository Structure
+```
+/ver0.1    → Host attachment layer 
+/ver0.2    → Canonical identity layer 
+/ver0.3    → Semantic snapshot layer
+```
+
+Each directory documents a completed infrastructure layer.
+
+Subsequent versions will be added as independent directories.
+
+---
+
+## 8. Foundational Principle
+
+Infrastructure precedes coordination.  
+Normalization precedes intelligence.  
+Versioning precedes expansion.
+
+SwarmPlug develops by structure, not by feature accumulation.
+## Contact
+If you are evaluating SwarmPlug for research or engineering use,feel free to reach out at: swarmplug@gmail.com
+
+**Note:SwarmPlug is developed under a boundary-first philosophy. Core implementation remains private by design.**
