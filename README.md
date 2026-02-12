@@ -6,7 +6,7 @@
 
 ## Statement
 
-SwarmPlug ver0.2 introduces a canonical identity and naming layer  
+SwarmPlug ver0.2 defines a canonical identity specification layer  
 above host attachment.
 
 It does not snapshot.  
@@ -19,7 +19,7 @@ It standardizes identity.
 
 ## Problem
 
-ROS systems use inconsistent naming across:
+ROS deployments often exhibit inconsistent naming patterns across:
 
 - Devices
     
@@ -76,13 +76,12 @@ flowchart TB
 Given identical host configuration,  
 ver0.2 produces identical canonical identity anchors.
 
-Identity is stable across:
+Identity remains invariant across:
 
-- Reboots
-    
-- Network changes
-    
-- Deployment contexts
+- System reboots
+- Network reconfiguration
+- Deployment relocation
+
     
 
 ---
@@ -100,7 +99,8 @@ SwarmPlug ver0.2 does not include:
 - Blockchain anchoring
     
 - Decision mechanisms
-    
+
+ver0.2 does not modify host runtime behavior.
 
 ---
 
@@ -126,5 +126,4 @@ ver0.2 establishes the identity layer.
 ## Contact
 
 If you are evaluating SwarmPlug for research or engineering use,feel free to reach out at: 
-
 📧 **swarmplug@gmail.com**
