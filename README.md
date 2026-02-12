@@ -6,14 +6,14 @@
 
 ## Statement
 
-SwarmPlug ver0.3 defines a deterministic semantic snapshot model  
+SwarmPlug ver0.3 defines a deterministic semantic snapshot specification  
 for heterogeneous ROS-based systems.
 
 It does not coordinate.  
 It does not transmit.  
 It does not decide.
 
-It standardizes.
+**It standardizes.**
 
 ---
 
@@ -36,7 +36,7 @@ Without semantic normalization, higher-level coordination becomes system-specifi
 
 ## Position
 
-SwarmPlug ver0.3 introduces a neutral semantic layer  
+SwarmPlug ver0.3 defines a neutral semantic abstraction boundary  
 between ROS runtime and distributed coordination.
 
 `Host Runtime  →  Semantic Abstraction  →  Snapshot`
@@ -81,8 +81,9 @@ Snapshot generation follows two defined triggers:
 - Periodic
     
 
-Given identical host state and trigger,  
-the snapshot structure remains deterministic.
+Given identical host state and identical trigger conditions,
+the resulting snapshot structure is invariant.
+
 
 ---
 
