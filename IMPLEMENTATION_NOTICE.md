@@ -10,3 +10,5 @@ and coordination logic remain proprietary.
 
 SwarmPlug is a trademark of QunYu Technology.
 Use of the name in derivative works must not imply official endorsement.
+
+This repository contains specification materials only.
