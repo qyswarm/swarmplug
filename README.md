@@ -18,7 +18,7 @@ SwarmPlug does **not**:
 - Implement coordination strategies  
 - Provide intelligence systems  
 
-SwarmPlug defines infrastructure boundaries.
+**SwarmPlug defines infrastructure boundaries.**
 
 ---
 
@@ -33,7 +33,7 @@ Each version:
 - Is version-scoped  
 - Does not expand retroactively  
 
-New capabilities are introduced only through new versions.
+**New capabilities are introduced only through new versions.**
 
 ---
 
