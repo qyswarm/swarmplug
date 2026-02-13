@@ -1,0 +1,34 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 QunYu Technology
+
+This repository contains architectural documentation and versioned
+infrastructure specification materials for the SwarmPlug project.
+
+You are free to:
+
+- Share — copy and redistribute the material in any medium or format
+- Adapt — remix, transform, and build upon the material for any purpose,
+  even commercially
+
+Under the following terms:
+
+- Attribution — You must give appropriate credit, provide a link to the
+  license, and indicate if changes were made. You may do so in any
+  reasonable manner, but not in any way that suggests the licensor
+  endorses you or your use.
+
+No additional restrictions — You may not apply legal terms or
+technological measures that legally restrict others from doing anything
+the license permits.
+
+This license applies only to the documentation and specification
+materials contained in this repository.
+
+Implementation code, runtime systems, internal schemas,
+transport mechanisms, coordination logic, and proprietary
+infrastructure components are NOT included in this repository
+and are not covered by this license.
+
+Full license text:
+https://creativecommons.org/licenses/by/4.0/
