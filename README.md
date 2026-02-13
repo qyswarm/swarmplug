@@ -1,6 +1,6 @@
 # SwarmPlug
 
-### A Versioned Infrastructure Specification for Semantic Normalization in Heterogeneous ROS Systems
+### A Versioned Infrastructure Specification for Semantic Normalization in ROS-based Systems
 
 ---
 
@@ -80,7 +80,7 @@ SwarmPlug explicitly separates normalization infrastructure from:
 - Intelligence or learning layers  
 - External anchoring or persistence systems  
 
-SwarmPlug does **not mutate host behavior by default**.
+SwarmPlug does **not mutate host behavior**.
 
 These domains are outside the core normalization layer.
 
