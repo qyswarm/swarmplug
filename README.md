@@ -1,13 +1,6 @@
 # SwarmPlug ver0.1
 
-**Host Attachment Infrastructure**
-
----
-
-> 🚩 This repository is a **public demo for SwarmPlug ver0.1**.  
-> It demonstrates observable capabilities and interfaces without exposing proprietary implementation details.
-
-![MyVideo_1](https://github.com/user-attachments/assets/b9444de8-d616-4299-8397-fcf16fdf4df1)
+**Host Attachment Specification**
 
 ---
 
@@ -44,8 +37,7 @@ A sidecar infrastructure must attach and discover these interfaces consistently.
 
 SwarmPlug ver0.1 defines the host attachment boundary.
 
-'ROS Runtime → SwarmPlug Attachment'
-
+`ROS Runtime → SwarmPlug Attachment`
 
 ver0.1 completes the connection and discovery layer.
 
@@ -76,11 +68,8 @@ Given a reachable ROS master,
 ver0.1 deterministically discovers:
 
 - Topics
-
 - Nodes
-
 - Services
-
 - Parameters
 
 No transformation, mutation, or interception is performed.
@@ -90,21 +79,17 @@ No transformation, mutation, or interception is performed.
 SwarmPlug ver0.1 does not include:
 
 - Canonical naming
-
 - Semantic abstraction
-
 - Snapshot generation
-
 - Communication transport
-
 - Coordination logic
 
 ## Version Context
-| Version | Responsibility    |
-| ------- | ----------------- |
-| 0.1     | Host attachment   |
-| 0.2     | Canonical naming  |
-| 0.3     | Semantic snapshot |
+| Version | Responsibility        |
+|---------|----------------------|
+| ver0.1  | Host attachment      |
+| ver0.2  | Canonical naming     |
+| ver0.3  | Semantic snapshot    |
 
 ## Principle
 
@@ -113,11 +98,13 @@ Discovery precedes normalization.
 
 ver0.1 establishes the attachment layer.
 
-## Contact
 
-If you are evaluating SwarmPlug for research or engineering use,
-feel free to reach out at:
+## License
 
-📧 swarmplug@gmail.com
+This version specification is part of the SwarmPlug documentation.
+
+Licensed under the **SwarmPlug Documentation License v1.0**.
+See the root LICENSE file for details.
+
 
 
