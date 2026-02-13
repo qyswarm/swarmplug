@@ -1,34 +1,63 @@
-Creative Commons Attribution 4.0 International (CC BY 4.0)
+SwarmPlug Documentation License v1.0
 
 Copyright (c) 2026 QunYu Technology
 
-This repository contains architectural documentation and versioned
-infrastructure specification materials for the SwarmPlug project.
+This repository contains architectural documentation and versioned infrastructure specifications for the SwarmPlug project (the “Documentation”).
 
-You are free to:
+This license governs use of the Documentation only.
 
-- Share — copy and redistribute the material in any medium or format
-- Adapt — remix, transform, and build upon the material for any purpose,
-  even commercially
+1. Scope
 
-Under the following terms:
+This license applies solely to the Documentation contained in this repository.
 
-- Attribution — You must give appropriate credit, provide a link to the
-  license, and indicate if changes were made. You may do so in any
-  reasonable manner, but not in any way that suggests the licensor
-  endorses you or your use.
+This license does not grant any rights to implement, distribute, or commercialize any software, hardware, or system under the name “SwarmPlug.”
 
-No additional restrictions — You may not apply legal terms or
-technological measures that legally restrict others from doing anything
-the license permits.
+Nothing in this license grants rights to any executable system, runtime component, protocol engine, hardware product, or commercial deployment related to SwarmPlug.
 
-This license applies only to the documentation and specification
-materials contained in this repository.
+2. Permitted Documentation Use
 
-Implementation code, runtime systems, internal schemas,
-transport mechanisms, coordination logic, and proprietary
-infrastructure components are NOT included in this repository
-and are not covered by this license.
+You may:
 
-Full license text:
-https://creativecommons.org/licenses/by/4.0/
+View and read the Documentation.
+
+Share the unmodified Documentation in whole for academic, research, and informational purposes.
+
+Cite the Documentation with proper attribution.
+
+Attribution must clearly reference:
+
+“SwarmPlug”
+
+QunYu Technology
+
+The official repository URL (where reasonably practicable)
+
+3. Implementation Boundary
+
+This repository does not contain implementation code.
+
+All runtime systems, protocol engines, canonical identity mechanisms, snapshot schema engines, transport mechanisms, coordination logic, hardware systems, executable software, and commercial deployments are not included and remain proprietary.
+
+Commercial collaboration or licensing inquiries may be directed to:
+
+swarmplug@gmail.com
+
+4. Trademark Notice
+
+“SwarmPlug” is a trademark of QunYu Technology.
+
+Use of the name in products, services, derivative systems, or compatibility claims must not imply official endorsement, certification, affiliation, or approval.
+
+Trademark usage requires separate written authorization.
+
+5. No Patent License
+
+No patent rights are granted under this license, whether express or implied.
+
+6. No Implied License
+
+No rights or licenses are granted by implication, estoppel, or otherwise, except as expressly stated in this license.
+
+7. Reservation of Rights
+
+All rights not expressly granted under this license are reserved.
