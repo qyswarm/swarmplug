@@ -38,7 +38,7 @@ independent of host runtime naming.
 
 `ROS Runtime → Host Attachment → Canonical Identity`
 
-ver0.2 completes the identity normalization layer.
+**ver0.2 completes the identity normalization layer.**
 
 ---
 
@@ -92,7 +92,7 @@ SwarmPlug ver0.2 does not include:
 - Blockchain anchoring    
 - Decision mechanisms
 
-ver0.2 does not modify host runtime behavior.
+**ver0.2 does not modify host runtime behavior.**
 
 ---
 
