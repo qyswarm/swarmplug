@@ -1,6 +1,6 @@
 # SwarmPlug ver0.3
 
-**Semantic Snapshot Infrastructure**
+**Semantic Snapshot Specification**
 
 ---
 
@@ -13,7 +13,7 @@ It does not coordinate.
 It does not transmit.  
 It does not decide.
 
-**It standardizes.**
+**It standardizes semantics.**
 
 ---
 
@@ -22,11 +22,8 @@ It does not decide.
 Robotic systems expose runtime state in inconsistent forms:
 
 - Different topic names
-    
 - Different coordinate conventions
-    
 - Different mode representations
-    
 - Different task encodings
     
 
@@ -82,7 +79,7 @@ Snapshot generation follows two defined triggers:
     
 
 Given identical host state and identical trigger conditions,
-the resulting snapshot structure is invariant.
+the resulting snapshot structure remains invariant.
 
 
 ---
@@ -91,19 +88,15 @@ the resulting snapshot structure is invariant.
 
 ver0.3 formalizes:
 
-- `meta`
-    
-- `identity`
-    
+- `meta`    
+- `identity`    
 - `state`
     
 
 Canonical state fields include:
 
-- pose
-    
-- twist
-    
+- pose    
+- twist    
 - mode
     
 - task_state (optional)
@@ -117,14 +110,10 @@ The schema is versioned.
 
 SwarmPlug ver0.3 does not include:
 
-- Network transport
-    
-- Mesh communication
-    
-- Blockchain anchoring
-    
-- Decision logic
-    
+- Network transport    
+- Mesh communication    
+- Blockchain anchoring    
+- Decision logic    
 - Control loops
     
 
@@ -133,12 +122,11 @@ Those layers are out of scope.
 ---
 
 ## Version Context
-
-|Version|Responsibility|
-|---|---|
-|0.1|Host connection|
-|0.2|Canonical naming|
-|0.3|Semantic snapshot definition|
+| Version | Responsibility        |
+|---------|----------------------|
+| ver0.1  | Host attachment      |
+| ver0.2  | Canonical identity   |
+| ver0.3  | Semantic snapshot    |
 
 ---
 
@@ -150,11 +138,11 @@ Determinism precedes distribution.
 
 ver0.3 establishes the normalization layer.
 
+## License
 
+This version specification is part of the SwarmPlug documentation.
 
-## Contact
+Licensed under the **SwarmPlug Documentation License v1.0**.
 
+See the root LICENSE file for details.
 
-If you are evaluating SwarmPlug for research or engineering use,feel free to reach out at: 
- 
-📧 **swarmplug@gmail.com**
