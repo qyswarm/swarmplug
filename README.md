@@ -38,7 +38,7 @@ between ROS runtime and distributed coordination.
 
 `Host Runtime  →  Semantic Abstraction  →  Snapshot`
 
-ver0.3 completes the semantic abstraction layer.
+**ver0.3 completes the semantic abstraction layer.**
 
 ---
 
@@ -136,7 +136,7 @@ Infrastructure precedes coordination.
 Normalization precedes intelligence.  
 Determinism precedes distribution.
 
-ver0.3 establishes the normalization layer.
+**ver0.3 establishes the normalization layer.**
 
 ## License
 
@@ -144,5 +144,5 @@ This version specification is part of the SwarmPlug documentation.
 
 Licensed under the **SwarmPlug Documentation License v1.0**.
 
-See the root LICENSE file for details.
+See the **main LICENSE** file for details.
 
