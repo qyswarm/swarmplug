@@ -105,7 +105,7 @@ This version specification is part of the SwarmPlug documentation.
 
 Licensed under the **SwarmPlug Documentation License v1.0**.
 
-See the root LICENSE file for details.
+See the **main LICENSE** file for details.
 
 
 
