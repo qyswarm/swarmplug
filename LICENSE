@@ -1,38 +1,55 @@
-SwarmPlug Documentation License v1.0
+# SwarmPlug Documentation License v1.0
 
-Copyright (c) 2026 QunYu Technology
+---
+
+**Copyright (c) 2026 QunYu Technology**
 
 This repository contains architectural documentation and versioned infrastructure specifications for the SwarmPlug project (the “Documentation”).
 
 This license governs use of the Documentation only.
 
-1. Scope
+---
 
-This license applies solely to the Documentation contained in this repository.
+## 1. Definitions
 
-This license does not grant any rights to implement, distribute, or commercialize any software, hardware, or system under the name “SwarmPlug.”
+**“Documentation”** refers to all textual materials, diagrams, architectural descriptions, version specifications, and related materials contained in this repository.
+
+**“SwarmPlug”** refers to the project name and associated infrastructure concept described in the Documentation.
+
+---
+
+## 2. Scope of License
+
+This license applies solely to the Documentation.
+
+This license does **not** grant:
+
+- Any right to implement SwarmPlug;
+- Any right to distribute software or hardware under the name “SwarmPlug”;
+- Any right to commercialize systems derived from the Documentation;
+- Any right to claim official compatibility, certification, or endorsement.
 
 Nothing in this license grants rights to any executable system, runtime component, protocol engine, hardware product, or commercial deployment related to SwarmPlug.
 
-2. Permitted Documentation Use
+---
+
+## 3. Permitted Uses
 
 You may:
 
-View and read the Documentation.
-
-Share the unmodified Documentation in whole for academic, research, and informational purposes.
-
-Cite the Documentation with proper attribution.
+1. View and read the Documentation.
+2. Share the unmodified Documentation in whole for academic, research, and informational purposes.
+3. Cite the Documentation with proper attribution.
 
 Attribution must clearly reference:
 
-“SwarmPlug”
+- **SwarmPlug**
+- **QunYu Technology**
+- The official repository URL (where reasonably practicable)
 
-QunYu Technology
+---
 
-The official repository URL (where reasonably practicable)
-
-3. Implementation Boundary
+## 4. Implementation Boundary
 
 This repository does not contain implementation code.
 
@@ -40,9 +57,11 @@ All runtime systems, protocol engines, canonical identity mechanisms, snapshot s
 
 Commercial collaboration or licensing inquiries may be directed to:
 
-swarmplug@gmail.com
+**swarmplug@gmail.com**
 
-4. Trademark Notice
+---
+
+## 5. Trademark Notice
 
 “SwarmPlug” is a trademark of QunYu Technology.
 
@@ -50,14 +69,22 @@ Use of the name in products, services, derivative systems, or compatibility clai
 
 Trademark usage requires separate written authorization.
 
-5. No Patent License
+---
+
+## 6. No Patent License
 
 No patent rights are granted under this license, whether express or implied.
 
-6. No Implied License
+---
+
+## 7. No Implied License
 
 No rights or licenses are granted by implication, estoppel, or otherwise, except as expressly stated in this license.
 
-7. Reservation of Rights
+---
+
+## 8. Reservation of Rights
 
 All rights not expressly granted under this license are reserved.
+
+---
