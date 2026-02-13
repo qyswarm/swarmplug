@@ -8,5 +8,5 @@ All runtime components, executable systems,
 protocol engines, translation layers, transport mechanisms,
 and coordination logic remain proprietary.
 
-The SwarmPlug name is a registered trademark.
+SwarmPlug is a trademark of QunYu Technology.
 Use of the name in derivative works must not imply official endorsement.
