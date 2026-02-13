@@ -123,14 +123,14 @@ SwarmPlug develops by structure, not by feature accumulation.
 
 ## License
 
-This repository contains architectural documentation and versioned
-infrastructure specifications.
+This repository is licensed under the  
+**SwarmPlug Documentation License v1.0**.
 
-It is licensed under:
+This license applies to the architectural documentation and versioned
+infrastructure specifications contained in this repository only.
 
-Creative Commons Attribution 4.0 International (CC BY 4.0)
+Implementation systems and runtime components are not included.
 
-Implementation details are proprietary and are not included in this repository.
 
 ---
 
