@@ -121,6 +121,20 @@ SwarmPlug develops by structure, not by feature accumulation.
 
 ---
 
+## License
+
+This repository contains architectural documentation and versioned
+infrastructure specifications.
+
+It is licensed under:
+
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Implementation details are proprietary and are not included in this repository.
+
+---
+
+
 ## Contact
 
 If you are evaluating SwarmPlug for research or engineering use,  
