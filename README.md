@@ -29,7 +29,7 @@ A ROS runtime exposes its operational surface through:
 - Services
 - Parameters
 
-A sidecar infrastructure must attach and discover these interfaces consistently.
+**A sidecar infrastructure must attach and discover these interfaces consistently.**
 
 ---
 
@@ -39,7 +39,7 @@ SwarmPlug ver0.1 defines the host attachment boundary.
 
 `ROS Runtime → SwarmPlug Attachment`
 
-ver0.1 completes the connection and discovery layer.
+**ver0.1 completes the connection and discovery layer.**
 
 ---
 
@@ -72,7 +72,7 @@ ver0.1 deterministically discovers:
 - Services
 - Parameters
 
-No transformation, mutation, or interception is performed.
+**No transformation, mutation, or interception is performed.**
 
 ## Scope Limitation
 
