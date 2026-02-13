@@ -1,6 +1,6 @@
 # SwarmPlug ver0.2
 
-**Canonical Naming Infrastructure**
+**Canonical Identity Specification**
 
 ---
 
@@ -13,7 +13,7 @@ It does not snapshot.
 It does not transmit.  
 It does not coordinate.
 
-It standardizes identity.
+**It standardizes identity.**
 
 ---
 
@@ -22,9 +22,7 @@ It standardizes identity.
 ROS deployments often exhibit inconsistent naming patterns across:
 
 - Devices
-    
-- Networks
-    
+- Networks    
 - Deployments
     
 
@@ -82,22 +80,16 @@ Identity remains invariant across:
 - Network reconfiguration
 - Deployment relocation
 
-    
-
 ---
 
 ## Scope Limitation
 
 SwarmPlug ver0.2 does not include:
 
-- State abstraction
-    
-- Snapshot schema
-    
-- Communication layers
-    
-- Blockchain anchoring
-    
+- State abstraction    
+- Snapshot schema   
+- Communication layers    
+- Blockchain anchoring    
 - Decision mechanisms
 
 ver0.2 does not modify host runtime behavior.
@@ -106,11 +98,11 @@ ver0.2 does not modify host runtime behavior.
 
 ## Version Context
 
-|Version|Responsibility|
-|---|---|
-|0.1|Host connection|
-|0.2|Canonical naming|
-|0.3|Semantic snapshot|
+| Version | Responsibility        |
+|---------|----------------------|
+| ver0.1  | Host attachment      |
+| ver0.2  | Canonical identity   |
+| ver0.3  | Semantic snapshot    |
 
 ---
 
@@ -121,9 +113,14 @@ Normalization precedes distribution.
 
 ver0.2 establishes the identity layer.
 
+---
+## License
+
+This version specification is part of the SwarmPlug documentation.
+
+Licensed under the **SwarmPlug Documentation License v1.0.**
+
+See the root LICENSE file for details.
 
 
-## Contact
 
-If you are evaluating SwarmPlug for research or engineering use,feel free to reach out at: 
-📧 **swarmplug@gmail.com**
